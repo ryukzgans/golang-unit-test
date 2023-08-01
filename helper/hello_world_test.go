@@ -3,19 +3,23 @@ package helper
 import (
 	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 // harus dimulai dengan "Test" kemudian nama functionnya
 // t *testing.T
 
 /*
- Mengagalkan Test
+ Menggagalkan Test
 	t.Fail() > Fail output, masih menjalankan eksekusi berikutnya
 	t.FailNow() > Fail output, langsung membreak eksekusi berikutnya
 	t.Error(message) > Fail output dengan print message, masih menjalankan eksekusi berikutnya
 	t.Fatal(message) > Fail output dengan print message, langsung membreak eksekusi berikutnya
 */
 
+// #Testing Manual
 func TestHelloWorldIlham(t *testing.T) {
 	result := HelloWorld("Ilham")
 	if result != "Hello Ilham" {
@@ -32,4 +36,20 @@ func TestHelloWorldKurniawan(t *testing.T) {
 		t.Fatal("Result must be 'Hello Kurniawan'")
 	}
 	fmt.Println("Test")
+}
+
+// #Menggunakan Library testify
+
+// go test -v -run=TestHelloWorldAssert
+func TestHelloWorldAssert(t *testing.T) {
+	result := HelloWorld("Ilham")
+	assert.Equal(t, "Hello Ilham", result, "Result must be 'Hello Ilham'") // t, expected result, actual result, msg
+	fmt.Println("Print ini akan tetap dijalankan")                         // assert akan memanggil Fail(), makanya akan tetap dijalankan
+}
+
+// go test -v -run=TestHelloWorldRequire
+func TestHelloWorldRequire(t *testing.T) {
+	result := HelloWorld("Ilham")
+	require.Equal(t, "Hello Ilham", result, "Result must be 'Hello Ilham'") // t, expected result, actual result, msg
+	fmt.Println("Print ini tidak akan dijalankan")                          // require akan memanggil FailNow(), makanya tidak akan dijalankan
 }
