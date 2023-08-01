@@ -55,7 +55,7 @@ func TestHelloWorldRequire(t *testing.T) {
 	fmt.Println("Print ini tidak akan dijalankan")                          // require akan memanggil FailNow(), makanya tidak akan dijalankan
 }
 
-// Skip Test
+// #Skip Test
 func TestSkip(t *testing.T) {
 	if runtime.GOOS != "darwin" {
 		t.Skip("Only can run on MacOs")
@@ -65,8 +65,7 @@ func TestSkip(t *testing.T) {
 	assert.Equal(t, "Hello Ilham", result, "Result must be 'Hello Ilham'")
 }
 
-// Before and After
-
+// #Before and After
 func TestMain(m *testing.M) {
 	// BEFORE
 	fmt.Println("--> BEFORE UNIT TEST <--")
@@ -75,4 +74,19 @@ func TestMain(m *testing.M) {
 
 	// AFTER
 	fmt.Println("--> AFTER UNIT TEST <--")
+}
+
+// #Sub Test
+func TestSubTest(t *testing.T) {
+	// go test -v -run=TestSubTest/IlhamTest
+	t.Run("IlhamTest", func(t *testing.T) {
+		result := HelloWorld("Ilham")
+		require.Equal(t, "Hello Ilham", result, "Result must be 'Hello Ilham'")
+	})
+
+	// go test -v -run=TestSubTest/KurniawanTest
+	t.Run("KurniawanTest", func(t *testing.T) {
+		result := HelloWorld("Kurniawan")
+		require.Equal(t, "Hello Kurniawan", result, "Result must be 'Hello Kurniawan'")
+	})
 }
