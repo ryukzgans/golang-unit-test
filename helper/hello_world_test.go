@@ -64,3 +64,15 @@ func TestSkip(t *testing.T) {
 	result := HelloWorld("Ilham")
 	assert.Equal(t, "Hello Ilham", result, "Result must be 'Hello Ilham'")
 }
+
+// Before and After
+
+func TestMain(m *testing.M) {
+	// BEFORE
+	fmt.Println("--> BEFORE UNIT TEST <--")
+
+	m.Run()
+
+	// AFTER
+	fmt.Println("--> AFTER UNIT TEST <--")
+}
