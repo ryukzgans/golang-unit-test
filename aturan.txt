@@ -1,0 +1,17 @@
+# Aturan File Test
+- Go-Lang memiliki aturan cara membuat file khusus untuk unit test
+- Untuk membuat file unit test, kita harus menggunakan akhiran _test
+- Jadi kita misal kita membuat file hello_world.go, artinya untuk membuat unit testnya, kita harus membuat file hello_world_test.go
+
+# Aturan Function Unit Test
+- Selain aturan nama file, di Go-Lang juga sudah diatur untuk nama function unit test
+- Nama function untuk unit test harus diawali dengan nama Test
+- Misal jika kita ingin mengetest function HelloWorld, maka kita akan membuat function unit test dengan nama TestHelloWorld
+- Tak ada aturan untuk nama belakang function unit test harus sama dengan nama function yang akan di test, yang penting adalah harus diawalin dengan kata Test
+- Selanjutnya harus memiliki parameter (t *testing.T) dan tidak mengembalikan return value
+
+# Benchmark Function
+- Mirip seperti unit test, untuk benchmark pun, di Go-Lang sudah ditentukan nama function nya, harus diawali dengan kata Benchmark, misal BenchmarkHelloWorld, BenchmarkXxx
+- Selain itu, harus memiliki parameter (b *testing.B)
+- Dan tidak boleh mengembalikan return value
+- Untuk nama file benchmark, sama seperti unit test, diakhiri dengan _test, misal hello_world_test.go
