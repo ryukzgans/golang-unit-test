@@ -121,3 +121,18 @@ func TestTableHelloWorld(t *testing.T) {
 		})
 	}
 }
+
+// #Benchmark
+
+// go test -v -run=TestTidakAda -bench=.
+// go test -v -run=TestTidakAda -bench=BenchmarkHelloWorldIlham
+func BenchmarkHelloWorldIlham(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Ilham")
+	}
+}
+func BenchmarkHelloWorldKurniawan(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Kurniawan")
+	}
+}
