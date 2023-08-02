@@ -153,3 +153,33 @@ func BenchmarkSub(b *testing.B) {
 		}
 	})
 }
+
+// #Benchmark Table
+// go test -v -run=TestTidakAda -bench=BenchmarkTable
+func BenchmarkTable(b *testing.B) {
+	benchmarks := []struct {
+		name    string
+		request string
+	}{
+		{
+			name:    "IlhamTest",
+			request: "Ilham",
+		},
+		{
+			name:    "KurniawanTest",
+			request: "Kurniawan",
+		},
+		{
+			name:    "TarmijiTest",
+			request: "Tarmiji",
+		},
+	}
+
+	for _, bench := range benchmarks {
+		b.Run(bench.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(bench.request)
+			}
+		})
+	}
+}
