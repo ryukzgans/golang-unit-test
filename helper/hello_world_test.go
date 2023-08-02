@@ -136,3 +136,20 @@ func BenchmarkHelloWorldKurniawan(b *testing.B) {
 		HelloWorld("Kurniawan")
 	}
 }
+
+// #Benchmark Sub
+
+// go test -v -run=TestTidakAda -bench=BenchmarkSub
+// go test -v -run=TestTidakAda -bench=BenchmarkSub/Ilham
+func BenchmarkSub(b *testing.B) {
+	b.Run("Ilham", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Ilham")
+		}
+	})
+	b.Run("Kurniawan", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Kurniawan")
+		}
+	})
+}
